@@ -74,7 +74,7 @@
                     <h1 class="hero-title">
                         ЕФЕКТИВНІ РІШЕННЯ ДЛЯ ВАШОГО БІЗНЕСУ
                     </h1>
-                    <button type="button" class="hero-button">
+                    <button data-modal-open type="button" class="hero-button">
                         Замовити послугу
                     </button>
                 </div>
@@ -148,29 +148,32 @@
                 <div class="container">
                     <h2 class="profile-title">Чим ми займаємося</h2>
                     <ul class="profile-list">
-                        <li>
+                        <li class="profile-product-list">
                             <img
                                 src="./images/img.jpg"
                                 alt="Picture_01"
                                 width="370"
                                 height="294"
                             />
+                            <div class="label"><p>Десктопні додатки</p></div>
                         </li>
-                        <li>
+                        <li class="profile-product-list">
                             <img
                                 src="./images/img1.jpg"
                                 alt="Picture_02"
                                 width="370"
                                 height="294"
                             />
+                            <div class="label"><p>Мобільні додатки</p></div>
                         </li>
-                        <li>
+                        <li class="profile-product-list">
                             <img
                                 src="./images/img2.jpg"
                                 alt="Picture_03"
                                 width="370"
                                 height="294"
                             />
+                            <div class="label"><p>Дизайнерські рішення</p></div>
                         </li>
                     </ul>
                 </div>
@@ -597,5 +600,15 @@
                 </div>
             </div>
         </footer>
+        <div class="backdrop is-hidden" data-modal>
+            <div class="modal">
+                <button
+                    type="button"
+                    class="modal-close-button"
+                    data-modal-close
+                ></button>
+            </div>
+        </div>
+        <script src="./js/modal.js"></script>
     </body>
 </html>

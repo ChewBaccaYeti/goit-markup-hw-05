@@ -17,6 +17,12 @@ html {
         --dark-color: #2F303A;
         --primary-white: #FFFFFF;
         --secondary-white: #F5F4FA;
+        --modal-close-color: #0000001a;
+        --modal-overlay-color: #00000033;
+
+        --duration: 250ms;
+        --longer: 550ms;
+        --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -112,16 +118,22 @@ header a {
         font-weight: 500;
         line-height: 1.15;
         letter-spacing: 0.02em;
+
+        transition-property: fill, color;
+        transition-duration: var(--duration);
+        transition-timing-function: var(--timing-function);
 }
 
 .current::after {
         position: absolute;
+        display: block;
         content:'';
         bottom:0;
-        left:-2px;
+        left:0;
+
         transform: translate(50, 50);
 
-        width: 48px;
+        width: 100%;
         height: 4px;
         border-radius: 2px;
         background: var(--accent-color);
@@ -140,6 +152,10 @@ header a {
         letter-spacing: 0.02em;
         fill: var(--secondary-color);
         color: var(--secondary-color);
+
+        transition-property: fill, color;
+        transition-duration: var(--duration);
+        transition-timing-function: var(--timing-function);
 }
 
 .header-nav-link:hover,
@@ -299,13 +315,17 @@ header a {
 
         border: none;
         cursor: pointer;
+
+        transition: background-color var(--duration);
+        transition-property: background-color;
+        transition-duration: var(--duration);
+        transition-timing-function: var(--timing-function);
 }
 
 .hero-button:focus,
 .hero-button:hover {
         background-color: var(--accent-color);
 }
-
 
 /* Benefits Section  */
 
@@ -356,15 +376,41 @@ header a {
         font-size: 36px;
         line-height: 1.16;
         margin-bottom: 50px;
-
         text-align: center;
         color: var(--primary-color);
 }
 
 .profile-list {
         display: flex;
-
         gap: 30px;
+}
+
+.profile-product-list {
+        position: relative;
+}
+
+.label {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        width: 100%;
+        height: 70px;
+        background: rgba(47, 48, 58, 0.8);
+
+        font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 1.14;
+                text-align: center;
+                letter-spacing: 0.03em;
+                text-transform: uppercase;
+                color:var(--primary-white)
 }
 
 /* Members section */
@@ -441,6 +487,10 @@ header a {
         border-radius: 50%;
 
         cursor: pointer;
+
+        transition-property: fill, background-color;
+        transition-duration: var(--duration);
+        transition-timing-function: var(--timing-function);
 }
 
 .social-link:hover,
@@ -481,6 +531,10 @@ header a {
         height: 92px;
 
         cursor: pointer;
+
+        transition-property: fill, border-color;
+        transition-duration: var(--duration);
+        transition-timing-function: var(--timing-function);
 }
 
 .link-clients:hover {
@@ -521,6 +575,10 @@ footer {
 
 .address-item {
         color: rgba(255, 255, 255, 0.6);
+
+        transition-property: color;
+        transition-duration: var(--duration);
+        transition-timing-function: var(--timing-function);
 }
 
 .address-item:not(:last-child) {
@@ -575,6 +633,10 @@ footer {
         height: 44px;
         border-radius: 50%;
         cursor: pointer;
+
+        transition-property: background-color;
+        transition-duration: var(--duration);
+        transition-timing-function: var(--timing-function);
 }
 
 .footer-list-link:hover,
@@ -605,6 +667,10 @@ footer {
         text-align: center;
         border: none;
         background-color: var(--secondary-white);
+
+        transition-property: color, background-color, box-shadow;
+        transition-duration: var(--duration);
+        transition-timing-function: var(--timing-function);
 }
 
 .options-button:hover,
@@ -685,6 +751,10 @@ footer {
         border-radius: 4px;
 
         cursor: pointer;
+
+        transition-property: color, background-color, box-shadow;
+        transition-duration: var(--duration);
+        transition-timing-function: var(--timing-function);
 }
 
 .card-button:hover,
@@ -710,6 +780,55 @@ footer {
 .box {
         width: 370px;
         background-color: var(--primary-white);
+
+        transition-property: box-shadow;
+        transition-duration: var(--duration);
+        transition-timing-function: var(--timing-function);
+}
+
+.thumb {
+        position: relative;
+        overflow: hidden;
+}
+
+.thumb::after {
+        position: absolute;
+        display: inline-block;
+        content: '';
+        top: 0;
+        left: 0;
+        width:100%;
+        height:100%;
+        opacity: 90%;
+        background-color: var(--accent-color);
+        transform: translateY(100%);
+        transition: transform var(--duration) var(--timing-function);
+}
+
+.box:hover .thumb::after {
+        transform: translate(0);
+}
+
+.box-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: 0 24px;
+
+        background-color: var(--accent-color-op);
+        transform: translateY(100%);
+        transition: transform var(--duration) var(--timing-function);
+}
+
+.box-overlay-text {
+        color: var(--primary-white);
+        
+        font-size: 18px;
+        line-height: 1.56;
 }
 
 .box:hover,
