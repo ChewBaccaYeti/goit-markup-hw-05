@@ -328,6 +328,8 @@ header a {
         background-color: var(--accent-color);
 }
 
+/* Modal window */
+
 @keyframes fadeIn {
         0% {
                 transform: scale(2);
