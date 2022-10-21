@@ -824,7 +824,11 @@ footer {
         color: var(--primary-white);
 }
 
-.thumb:hover .box-overlay{
+.box-link:hover .box-overlay{
+        transform: translateY(0%);
+}
+
+.box-link:focus .box-overlay {
         transform: translateY(0%);
 }
 
