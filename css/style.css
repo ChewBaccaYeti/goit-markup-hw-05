@@ -328,95 +328,6 @@ header a {
         background-color: var(--accent-color);
 }
 
-/* Modal window */
-
-@keyframes fadeIn {
-        0% {
-                transform: scale(2);
-                opacity: 0;
-        }
-
-        100% {
-                transform: scale(1);
-                opacity: 1;
-        }
-}
-
-@keyframes fadeOut {
-        0% {
-                opacity: 1;
-        }
-
-        100% {
-                opacity: 0;
-        }
-}
-
-@keyframes jumpOut {
-        0% {
-                transform: translate(-50%, -50%) scale(1, 1);
-        }
-
-        45% {
-                transform: translate(-50%, -35%) scale(1.25, 0.8);
-        }
-
-        100% {
-                transform: translate(-50%, -200%) scale(0.5, 2);
-        }
-}
-
-.backdrop {
-        position: fixed;
-        top: 0;
-        left: 0;
-
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-
-        background-color: var(--modal-overlay-color);
-
-        visibility: hidden;
-        pointer-events: none;
-}
-
-.modal {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-
-        min-width: 528px;
-        min-height: 581px;
-
-        background: var(--white-color);
-        box-shadow: 0px 1px 3px #0000001f, 0px 1px 1px #00000024, 0px 2px 1px #00000033;
-        border-radius: 4px;
-
-        transform: translate(-50%, -50%);
-}
-
-.modal-close-button {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        width: 30px;
-        height: 30px;
-        padding: 0;
-
-        cursor: pointer;
-
-        background-color: var(--white-color);
-        color: var(--black-color);
-        border: 1px solid var(--modal-close-color);
-        border-radius: 50%;
-}
-
 /* Benefits Section  */
 
 .benefits-list {
@@ -868,12 +779,22 @@ footer {
 }
 
 .box {
+        position: relative;
         width: 370px;
-        background-color: var(--primary-white);
+        overflow: hidden;
 
         transition-property: box-shadow;
         transition-duration: var(--duration);
         transition-timing-function: var(--timing-function);
+}
+
+.box-link {
+        display: block;
+        transition: box-shadow var(--duration) var(--timing-function);
+}
+
+.box-link:hover {
+        position: absolute;
 }
 
 .thumb {
@@ -883,35 +804,42 @@ footer {
 
 .box-overlay {
         position: absolute;
-        top: 0;
-        left: 0;
-
-        display: flex;
-        align-items: center;
-        height: 100%;
-        padding: 0 24px;
-
-        background-color: var(--accent-color-op);
-        transform: translateY(100%);
-        transition: transform var(--duration) var(--timing-function);
+                top: 0;
+                left: 0;
+        
+                display: flex;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                padding: 0 24px;
+                opacity: 85%;
+                background-color:var(--accent-color);
+                transform: translateY(100%);
+                transition: transform var(--duration) var(--timing-function);
 }
 
 .box-overlay-text {
-        position: absolute;
-        top: 0;
-        left: 0;
         font-size: 18px;
         line-height: 1.56;
-
-        color:  black;
-        transform: translateY(-100%);
-        transition: transform var(--duration) var(--timing-function);
-}
-.box:hover .thumb::after {
-        transform: translate(0);
+        color: var(--primary-white);
 }
 
-.thumb::after {
+.thumb:hover .box-overlay{
+        transform: translateY(0%);
+}
+
+.box:hover,
+.box:focus {
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.box:nth-child(3n) {
+        margin-right: 0px;
+}
+
+/* Не видаляю тому що добрий варіант */
+
+/* .thumb::after {
         position: absolute;
         display: inline-block;
         content: '';
@@ -923,16 +851,7 @@ footer {
         background-color: var(--accent-color);
         transform: translateY(100%);
         transition: transform var(--duration) var(--timing-function);
-}
-
-.box:hover,
-.box:focus {
-        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
-}
-
-.box:nth-child(3n) {
-        margin-right: 0px;
-}
+} */
 
 .product {
         padding: 20px 24px;
@@ -953,4 +872,71 @@ footer {
         line-height: 1.87;
 
         color: var(--secondary-color);
+}
+
+/* Modal window */
+
+.backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        background-color: var(--modal-overlay-color);
+}
+
+.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+}
+
+.modal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        min-width: 528px;
+        min-height: 581px;
+
+        background: var(--primary-white);
+        box-shadow: 0px 1px 3px #0000001f, 0px 1px 1px #00000024, 0px 2px 1px #00000033;
+        border-radius: 4px;
+
+        transform: translate(-50%, -50%);
+}
+
+.modal-close-button {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 30px;
+        height: 30px;
+        padding: 0;
+
+        cursor: pointer;
+
+        transition-duration: var(--duration);
+        transition-timing-function: var(--timing-function);
+        background-color: var(--white-color);
+        color: var(--black-color);
+        border: 1px solid var(--modal-close-color);
+        border-radius: 50%;
+}
+
+.modal-close-button:hover {
+        color: var(--primary-white);
+        background-color: var(--accent-color);
+}
+
+.no-scroll {
+        overflow: hidden;
 }
