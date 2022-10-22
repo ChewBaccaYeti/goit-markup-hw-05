@@ -543,8 +543,6 @@ header a {
         border-color: var(--accent-color);
 }
 
-.svg-clients {}
-
 /* Footer Section  */
 
 footer {
@@ -591,10 +589,6 @@ footer {
         color: var(--primary-white);
 }
 
-/* Achtung! */
-
-.footer-wrapper {}
-
 .footer-address-container {
         display: flex;
         align-items: baseline;
@@ -619,8 +613,6 @@ footer {
         display: flex;
         gap: 10px;
 }
-
-.footer-list-item {}
 
 .footer-list-link {
         cursor: pointer;
