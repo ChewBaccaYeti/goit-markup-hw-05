@@ -929,7 +929,7 @@ footer {
 }
 
 .modal-close-button:hover {
-        color: var(--primary-white);
+        fill: var(--primary-white);
         background-color: var(--accent-color);
 }
 
